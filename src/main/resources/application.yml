@@ -1,0 +1,25 @@
+management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: readinessState, binders
+      show-details: ALWAYS
+  health:
+    probes:
+      enabled: true
+  endpoints:
+    health:
+      sensitive: false
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        test-kafka-topic-out-0:
+          destination: test-kafka-topic
+          contentType: application/json
+
